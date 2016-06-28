@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="${groupId}.dao.test.TestDao">
+	
+	<resultMap id="testResultMap" type="${groupId}.domain.Test" >
+		<id column="id" property="id"/>
+		<result column="merchant_id" property="merchantId"/>
+		<result column="csr_id" property="csrId"/>
+	</resultMap>
+	
+	<select id="excuteTest"  parameterType = "${groupId}.domain.Test" resultMap="testResultMap">
+	    select id, merchant_id, csr_id from test where merchant_id = #{merchantId}
+	</select>
+
+</mapper>
+
+

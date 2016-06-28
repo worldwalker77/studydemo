@@ -1,0 +1,37 @@
+html{width:100%;height:100%}
+.bodyArea{width:1349px;height:100%;margin:0px;font: 12px/150% Arial,Verdana,"宋体";}
+
+.headerArea{height:155px;font-size:10px;color:#666;text-align: center}
+.mainArea{margin-left:3%;margin-right:3%}
+.footerArea{height:50px;margin-left:3%;margin-right:3%;margin-top:5px;clear:both;background-color:#C6C6C6;}
+
+.headerArea .topArea{background-color:#F7F7F7;height:20%}
+.headerArea .topArea .top{height:100%;margin-left:3%;margin-right:3%}
+.headerArea .topArea .leftmenu{height:100%;width:20%;float:left}
+.headerArea .topArea .rightmenu{height:100%;width:60%;float:right}
+.headerArea .topArea ul{margin-top:8px;}
+.headerArea .topArea ul li{ list-style-type: none;display: inline;margin-right: 15px;}
+.headerArea a{text-decoration:none;color:#666}
+
+.headerArea .searchArea{height:55%;margin-left:3%;margin-right:3%}
+.headerArea .searchArea div{float:left}
+.headerArea .searchArea .logo2014{margin-top:12px}
+.headerArea .searchArea .promotionImage{margin-top:8px}
+.headerArea .searchArea .search{height:40px;margin-top:25px;margin-left:15px}
+.headerArea .searchArea .myHome{background-color:#F7F7F7;width:110px;height:30px;margin-top:30px;margin-left:20px}
+.headerArea .searchArea .myHome .home{;margin-left:28px;margin-top:7px}
+.headerArea .searchArea .myCart{background-color:#F7F7F7;width:110px;height:30px;margin-top:30px;margin-left:20px}
+.headerArea .searchArea .myCart .cart{;margin-left:20px;margin-top:7px}
+.headerArea .searchArea .report{margin-top:21px;margin-left:26px}
+
+.headerArea .topNavArea{background-color:#E4393C;height:25%;margin-left:3%;margin-right:3%;font-family:microsoft yahei;font-weight:bold;font-size:15px;color:#fff;text-align:center}
+.headerArea .topNavArea div{float:left}
+.headerArea .topNavArea .allSort{width:12%;margin-left:15px;margin-top:10px;text-align:left}
+.headerArea .topNavArea .subNavSty{width:6%;margin-left:15px;margin-top:10px}
+.headerArea .topNavArea a{color:#fff}
+
+.pagenation{float:right}
+.pagenation a{text-decoration:none;display:inline-block;line-height:12px;padding:2px 5px;color:#333;border:1px solid #ccc;margin:0 2px;}
+.pagenation a:hover,.pagenation a.on{background:#999;color:#fff;border:1px solid #333;}
+.pagenation a.unclick,.pagenation a.unclick:hover{background:none;border:1px solid #eee;color:#999;cursor:default;}
+

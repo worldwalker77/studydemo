@@ -1,0 +1,82 @@
+#if(!$notShowTopArea)
+	<div class="topArea">
+		<div class="top">
+			<div class="leftmenu">
+				<ul>
+					<li>收藏京东</li>
+					<li>武汉<a href="#">[更换]</a></li>
+				</ul>
+			</div>
+			<div class="rightmenu">
+				<ul>
+					<li><a href="/frontUser/registerIndex" target="blank">[免费注册]</a></li>
+					<li><a href="#">我的订单</a></li>
+					<li><a href="#">会员俱乐部</a></li>
+					<li><a href="#">手机京东</a></li>
+					<li><a href="#">客户服务</a></li>
+					<li><a href="#">网站导航</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+#end
+
+
+#if(!$notShowSearchArea)
+	<div class="searchArea">
+		<div class="logo2014">
+			<a href="#" hidefocus="true">
+				<img src="http://misc.360buyimg.com/lib/img/e/logo-201305.png" width="270px" height="60px" alt="京东">
+			</a>
+		</div>
+		<div class="promotionImage">
+			<a href="#" target="_blank">
+				<img src="http://img12.360buyimg.com/da/jfs/t253/67/574067007/21365/efb9d71b/53ed9caeN4f6269f8.gif">
+			</a>
+		</div>
+		<div class="search">
+			<input type="text" id="searchKey" style="width:400px;height:35px">
+			<input type="button" id="submitBtn" value="搜索" style="width:50px;height:35px;margin-left:0px">
+		</div>
+		<div class="myHome">
+			<div class="home">
+				<a href="#" target="_blank">我的京东</a>
+			</div>
+		</div>
+		<div class="myCart">
+			<div class="cart">
+				<a href="#" target="_blank">去购物车结算</a>
+			</div>
+		</div>
+		<div class="report">
+			<a href="#">
+				<img src="http://img11.360buyimg.com/da/jfs/t154/253/1471854336/2409/118e7abc/53ace1f7Na53fac3d.png" alt="暴恐音视频举报专区">
+			</a>
+		</div>
+	</div>
+#end
+
+#if(!$notShowTopNavArea)
+	<div class="topNavArea">
+		<div class="allSort"><a href="#" target="_blank">全商品分类</a></div>
+		<div class="subNavSty"><a href="#" target="_blank">首页</a></div>
+		<div class="subNavSty"><a href="#" target="_blank">服装城</a></div>
+		<div class="subNavSty"><a href="#" target="_blank">食品</a></div>
+		<div class="subNavSty"><a href="#" target="_blank">团购</a></div>
+		<div class="subNavSty"><a href="#" target="_blank">夺宝岛</a></div>
+		<div class="subNavSty"><a href="#" target="_blank">金融</a></div>
+	</div>
+#end
+
+<script type="text/javascript"  src="/js/jquery/jquery.cookie.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var userName = $.cookie("userName");
+		if(typeof(userName) != "undefined"){
+			$(".topArea .rightmenu ul").prepend("<li>" + userName + "..." + "</li>");
+		}
+		
+		
+	});
+</script> 
+

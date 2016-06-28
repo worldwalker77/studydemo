@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>${groupId}</groupId>
+    <artifactId>${artifactId}</artifactId>
+    <version>${artifactId-parent}</version>
+  </parent>
+  <groupId>${groupId}.web</groupId>
+  <artifactId>${artifactId}-web</artifactId>
+  <version>${artifactId-web}</version>
+  <packaging>war</packaging>
+  <name>${artifactId}-web Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>${groupId}.service</groupId>
+    	<artifactId>${artifactId}-service</artifactId>
+    	<version>${artifactId-service}</version>
+    </dependency>
+    
+  </dependencies>
+  <build>
+    <finalName>${artifactId}-web</finalName>
+  </build>
+  
+  <profiles>
+	<!--开发环境 -->
+	<profile>
+		<id>development</id>
+		<properties>
+			<!-- 日志路径 -->
+			<logpath>d:/Logs/${artifactId}</logpath>
+			<!-- 日志级别 -->
+			<loglevel>ERROR</loglevel>
+		</properties>
+	</profile>
+	<!--测试环境 -->
+	<profile>
+		<id>test</id>
+		<properties>
+			<!-- 日志路径 -->
+			<logpath>d:/Logs/${artifactId}</logpath>
+			<!-- 日志级别 -->
+			<loglevel>ERROR</loglevel>
+		</properties>
+	</profile>
+	<!--生产环境 -->
+	<profile>
+		<id>production</id>
+		<properties>
+			<!-- 日志路径 -->
+			<logpath>d:/Logs/${artifactId}</logpath>
+			<!-- 日志级别 -->
+			<loglevel>ERROR</loglevel>
+		</properties>
+	</profile>
+  </profiles>
+  
+</project>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.1.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+            http://www.springframework.org/schema/util
+            http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+	<mvc:default-servlet-handler/>
+	 <context:annotation-config/>  
+	<!-- 自动扫描的包名 -->    
+	<context:component-scan base-package="${groupId}*"/>  
+	 <!-- 默认的注解映射的支持 -->   
+	<mvc:annotation-driven/>
+    <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath">
+            <value>WEB-INF/velocity</value>
+        </property>
+        <property name= "velocityProperties">
+            <props>
+                <prop key= "input.encoding">utf-8</prop>
+                <prop key= "output.encoding">utf-8</prop>
+            </props>
+         </property>
+    </bean>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+    	<property name= "prefix" value= "/"/>
+        <property name="suffix">
+            <value>.vm</value>
+        </property>
+        <property name= "contentType">
+            <value>text/html;charset=utf-8</value>
+        </property>
+        <property name="layoutUrl" value="layout/layout.vm" />
+    </bean>
+	<!-- 全局异常配置   对各种异常转向不同的页面-->  
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+        <property name="exceptionMappings">  
+            <props>  
+                <prop key="java.lang.Exception">exception/globalError</prop>  
+                <prop key="java.lang.Throwable">exception/globalError</prop>  
+            </props>  
+        </property>  
+        <property name="statusCodes">  
+            <props>  
+                <prop key="exception/500">500</prop>  
+                <prop key="exception/400">404</prop>  
+            </props>  
+        </property>  
+        <!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->  
+        <property name="warnLogCategory" value="WARN"></property>  
+        <!-- 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 -->  
+        <property name="defaultErrorView" value="exception/globalError"></property>  
+        <!-- 默认HTTP状态码 -->  
+        <property name="defaultStatusCode" value="500"></property>  
+    </bean> 
+  <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="defaultContentType" value="text/html"/>
+        <!-- not by accept header -->
+        <property name="ignoreAcceptHeader" value="true"/>
+        <!-- by extension -->
+        <property name="mediaTypes">
+            <map>
+                <entry key="xml" value="application/xml"/>
+                <entry key="json" value="application/json"/>
+            </map>
+        </property>
+        <property name="viewResolvers">
+            <list>
+                <ref bean="viewResolver"/>
+            </list>
+        </property>
+        <property name="defaultViews">
+            <list>
+                <!-- for application/json -->
+                <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>
+            </list>
+        </property>
+    </bean>
+    
+    
+</beans>

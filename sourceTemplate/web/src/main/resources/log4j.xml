@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%7r] %6p - %30.30c - %m \n"/>
+        </layout>
+    </appender>
+    <appender name="LOG-MAIN" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <param name="file" value="${logpath}/main.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%7r] %6p - %30.30c - %m \n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ERROR"/>
+        </filter>
+    </appender>
+   
+    <appender name="LOG-FILTER" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <param name="file" value="${logpath}/filter.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] - %m \n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ERROR"/>
+        </filter>
+    </appender>
+    
+    <category name="${groupId}" additivity="true">
+        <priority value="${loglevel}"/>
+        <appender-ref ref="LOG-MAIN"/>
+    </category>
+    <category name="${groupId}.web.filter" additivity="true">
+        <priority value="${loglevel}"/>
+        <appender-ref ref="LOG-FILTER"/>
+    </category>
+   
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+    
+</log4j:configuration>
